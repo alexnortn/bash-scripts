@@ -1,0 +1,7 @@
+Alex Norton
+2016
+
+
+Scripts for automating the renaming of various file types.
+
+1. AI- rename Adobe Illustrator exports to remove the unwanted filename prefix.
