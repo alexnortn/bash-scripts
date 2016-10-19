@@ -34,7 +34,7 @@ For all the files in a directory of the specified type, rename (mv) file, by los
 	
 Copy below
 
-	for f in *.pdf; do convert $f jpg/${f%.*}-%04d.jpg; done
+	for f in *.pdf; do convert -density 300 -trim $f -quality 100 jpg2/${f%.*}-%04d.jpg; done
 
 ---
 
@@ -50,3 +50,5 @@ done
 Explanation
 
 For all the files in a directory of the specified type, convert file from multipage-pdf to jpg; place converted filed in sub-directory <jpg/> using name of parent file ${f%.*} + 4 digit padded page number -%04d
+
+High Quality Flags: -density 300 -trim | -quality 100
