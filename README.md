@@ -52,3 +52,38 @@ Explanation
 For all the files in a directory of the specified type, convert file from multipage-pdf to jpg; place converted filed in sub-directory <jpg/> using name of parent file ${f%.*} + 4 digit padded page number -%04d
 
 High Quality Flags: -density 300 -trim | -quality 100
+
+
+3. Automate Portfolio Site Image Resize --> { *.jpg, *.png, *.gif } with imagemagick
+
+---
+	
+Usage
+cd into assets/images/projects/<project>
+run from terminal as bash script
+
+	for project in */; do
+		rm -rf $project/retina
+		rm -rf $project/standard
+
+		mkdir $project/retina
+		mkdir $project/standard
+
+		path=$project"hi-res"
+
+		for f in $path/*.{jpg,png,gif}; do
+			filename="${f##*/}"
+			echo $filename
+			
+			convert $f -resize 50% $project"retina"/$filename
+			convert $f -resize 25% $project"standard"/$filename
+		done
+	done
+
+---
+
+Explanation
+
+Convert high resolution compressed site images (~3500px) to standard (25%) and retina (50%) views. Place in respective folders.
+
+
