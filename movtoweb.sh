@@ -9,7 +9,7 @@
 #		/low-res
 #		/retina
 #		/standard
-#		/videos <-- Will place video here
+#		/videos <-- Will save video here
 
 #  Usage
 #  ~/Documents/Github/bash-scripts bash webtomove.sh <project-name> <path-to-video(s)>
@@ -22,8 +22,10 @@ if [ -z "$project" ] || [ -z "$videoInputPath" ]
 		echo "Error: Don't forget to select a project + video path!"
 else
 	projectPath="/Users/alexnortn/Documents/Github/Portfolio/assets/images/projects/$1/videos"
-	videoInputPath2=/Users/alexnortn/Google\ Drive/Dropbox\ \(MIT\)/Portfolio/$2
+	videoInputPath2=/Users/alexnortn/Desktop/$2
 	videoInputPath3=("$videoInputPath2"/*.mov)
+
+	~/Desktop/Portfolio/Explore_Assets/Videos$ 
 
 	# For all .mov files in <path>
 	for video in "${videoInputPath3[@]}"
@@ -37,5 +39,8 @@ else
 		
 			# Create webm
 			ffmpeg -i "$video" -vcodec libvpx-vp9 -b:v 1M -acodec libvorbis -threads 8 -tile-columns 6 -frame-parallel 1 $projectPath/$videoName.webm
+
+			# Create poster
+			ffmpeg -i "$video" -ss 00:00:03 -vframes 1 $projectPath/$videoName.jpg
 	done
 fi

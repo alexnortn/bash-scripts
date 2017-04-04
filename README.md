@@ -87,3 +87,11 @@ Explanation
 Convert high resolution compressed site images (~3500px) to standard (25%) and retina (50%) views. Place in respective folders.
 
 
+4. Node -> Calculate column width given margins
+
+---
+
+ function columnWidth(width, margin, count) { console.log( "given a table of width " + width + " containing " + count + " columns, with " + margin + " margin, resulting column width => " + Math.floor(( width - (count + 1) * margin ) / count) )}
+
+
+
